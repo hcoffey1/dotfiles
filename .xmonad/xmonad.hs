@@ -769,6 +769,9 @@ myKeys =
         , ("M-S-c", kill1)                         -- Kill the currently focused client
         , ("M-S-a", killAll)                       -- Kill all windows on current workspace
 
+    -- Lock screen
+        , ("M-z", spawn "slock")
+
     -- Workspaces
         , ("M-.", nextScreen)  -- Switch focus to next monitor
         , ("M-,", prevScreen)  -- Switch focus to prev monitor
