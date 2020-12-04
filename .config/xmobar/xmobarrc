@@ -33,9 +33,9 @@ Config { font    = "xft:Ubuntu:weight=bold:pixelsize=11:antialias=true:hinting=t
                     , Run Battery        [ "--template" , "Batt: <acstatus>"
                              , "--Low"      , "10"        -- units: %
                              , "--High"     , "80"        -- units: %
-                             , "--low"      , "darkred"
-                             , "--normal"   , "darkorange"
-                             , "--high"     , "darkgreen"
+                             , "--low"      , "red"
+                             , "--normal"   , "orange"
+                             , "--high"     , "green"
 
                              , "--" -- battery specific options
                                        -- discharging status
@@ -49,9 +49,9 @@ Config { font    = "xft:Ubuntu:weight=bold:pixelsize=11:antialias=true:hinting=t
                     , Run CoreTemp       [ "--template" , "Temp: <core0>°C|<core1>°C"
                                  , "--Low"      , "70"        -- units: °C
                                  , "--High"     , "80"        -- units: °C
-                                 , "--low"      , "darkgreen"
-                                 , "--normal"   , "darkorange"
-                                 , "--high"     , "darkred"
+                                 , "--low"      , "green"
+                                 , "--normal"   , "orange"
+                                 , "--high"     , "red"
                                  ] 50
                       -- Runs a standard shell command 'uname -r' to get kernel version
                     , Run Com "uname" ["-r"] "" 3600
