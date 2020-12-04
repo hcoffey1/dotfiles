@@ -17,7 +17,7 @@ Config { font    = "xft:Ubuntu:weight=bold:pixelsize=11:antialias=true:hinting=t
        , iconRoot = "/home/hayden/.xmonad/xpm/"  -- default: "."
        , commands = [ 
                       -- Time and date
-                      Run Date "<fn=1>\xf133</fn> %b %d %Y (%H:%M)" "date" 50
+                      Run Date "%b %d %Y (%H:%M)" "date" 50
                       -- Network up and down
                     , Run Network "enp6s0" ["-t", "<fn=1>\xf0aa</fn> <rx>kb  <fn=1>\xf0ab</fn> <tx>kb"] 20
                       -- Cpu usage in percent
@@ -29,6 +29,30 @@ Config { font    = "xft:Ubuntu:weight=bold:pixelsize=11:antialias=true:hinting=t
                       -- Runs custom script to check for pacman updates.
                       -- This script is in my dotfiles repo in .local/bin.
                     , Run Com "/home/hayden/.local/bin/pacupdate" [] "pacupdate" 36000
+                      -- Battery Info
+                    , Run Battery        [ "--template" , "Batt: <acstatus>"
+                             , "--Low"      , "10"        -- units: %
+                             , "--High"     , "80"        -- units: %
+                             , "--low"      , "darkred"
+                             , "--normal"   , "darkorange"
+                             , "--high"     , "darkgreen"
+
+                             , "--" -- battery specific options
+                                       -- discharging status
+                                       , "-o"	, "<left>% (<timeleft>)"
+                                       -- AC "on" status
+                                       , "-O"	, "<fc=#dAA520>Charging</fc>"
+                                       -- charged status
+                                       , "-i"	, "<fc=#006000>Charged</fc>"
+                             ] 50
+                     -- cpu core temperature monitor
+                    , Run CoreTemp       [ "--template" , "Temp: <core0>°C|<core1>°C"
+                                 , "--Low"      , "70"        -- units: °C
+                                 , "--High"     , "80"        -- units: °C
+                                 , "--low"      , "darkgreen"
+                                 , "--normal"   , "darkorange"
+                                 , "--high"     , "darkred"
+                                 ] 50
                       -- Runs a standard shell command 'uname -r' to get kernel version
                     , Run Com "uname" ["-r"] "" 3600
                       -- Prints out the left side items such as workspaces, layout, etc.
@@ -37,5 +61,5 @@ Config { font    = "xft:Ubuntu:weight=bold:pixelsize=11:antialias=true:hinting=t
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = " <action=`xdotool key control+alt+g`><icon=haskell_20.xpm/> </action><fc=#666666>  |</fc> %UnsafeStdinReader% }{ <fc=#666666><fn=2>|</fn> </fc><fc=#b3afc2><fn=1></fn>  %uname% </fc><fc=#666666> <fn=2>|</fn></fc> <fc=#ecbe7b> %cpu% </fc><fc=#666666> <fn=2>|</fn></fc> <fc=#ff6c6b> %memory% </fc><fc=#666666> <fn=2>|</fn></fc> <fc=#51afef> %disku% </fc><fc=#666666> <fn=2>|</fn></fc> <fc=#98be65> %enp6s0% </fc><fc=#666666> <fn=2>|</fn></fc> <fc=#c678dd><fn=1></fn>  %pacupdate% </fc><fc=#666666> <fn=2>|</fn></fc> <fc=#46d9ff> %date%  </fc>"
+       , template = " <action=`xdotool key control+alt+g`><icon=haskell_20.xpm/> </action><fc=#666666>  |</fc> %UnsafeStdinReader% }{ <fc=#666666><fn=2>|</fn> </fc><fc=#b3afc2> %uname% </fc><fc=#666666> <fn=2>|</fn></fc> <fc=#ecbe7b> %cpu% </fc><fc=#666666> <fn=2>|</fn></fc> <fc=#ff6c6b> %memory% </fc><fc=#666666> <fn=2>|</fn></fc> <fc=#51afef> %disku% </fc><fc=#666666> <fn=2>|</fn></fc> <fc=#98be65> %coretemp% </fc><fc=#666666> <fn=2>|</fn></fc> <fc=#c678dd> %battery% </fc><fc=#666666> <fn=2>|</fn></fc> <fc=#46d9ff> %date%  </fc>"
        }
