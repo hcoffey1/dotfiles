@@ -82,6 +82,10 @@ alias vim="nvim"
 alias vi="nvim"
 alias dotfiles="/usr/bin/git --git-dir=${HOME}/.dotfiles/ --work-tree=${HOME}"
 
+alias res="cd ${HOME}/school/grad/research"
+alias proj="cd ${HOME}/projects"
+alias ta="cd ${HOME}/ta"
+
 # Add vim controls to zsh
 bindkey -v
 bindkey "^?" backward-delete-char
