@@ -1,0 +1,4 @@
+#!/bin/bash
+#Hayden Coffey
+#AMD CPU temperature
+sensors | grep Tdie | awk -F " " '{print $2}'
