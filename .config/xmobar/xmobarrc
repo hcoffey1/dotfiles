@@ -2,6 +2,8 @@
 -- install xmobar with these flags: --flags="with_alsa" --flags="with_mpd" --flags="with_xft"  OR --flags="all_extensions"
 -- you can find weather location codes here: http://weather.noaa.gov/index.html
 
+-- NOTE: If this throws byte sequence errors, make sure to check system locale LANG is US UTF-8.
+
 Config { font    = "xft:Ubuntu:weight=bold:pixelsize=11:antialias=true:hinting=true"
        , additionalFonts = [ "xft:Mononoki Nerd Font:pixelsize=11:antialias=true:hinting=true"
                            , "xft:Mononoki Nerd Font:pixelsize=16:antialias=true:hinting=true"
@@ -46,7 +48,7 @@ Config { font    = "xft:Ubuntu:weight=bold:pixelsize=11:antialias=true:hinting=t
                                        , "-i"	, "<fc=#006000>Charged</fc>"
                              ] 50
                      -- cpu core temperature monitor
-                    , Run CoreTemp       [ "--template" , "Temp: <core0>°C|<core1>°C"
+                    , Run CoreTemp       [ "--template" , "Temp: <core0>C|<core1>°C"
                                  , "--Low"      , "70"        -- units: °C
                                  , "--High"     , "80"        -- units: °C
                                  , "--low"      , "green"
