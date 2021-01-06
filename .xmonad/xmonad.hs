@@ -735,6 +735,7 @@ myManageHook = composeAll
      -- name of my workspaces, and the names would very long if using clickable workspaces.
      [ title =? "Mozilla Firefox"     --> doShift ( myWorkspaces !! 1 )
      , className =? "spotify"     --> doShift ( myWorkspaces !! 6 )
+     , className =? "discord"     --> doShift ( myWorkspaces !! 5 )
      , className =? "mpv"     --> doShift ( myWorkspaces !! 7 )
      , className =? "vlc"     --> doShift ( myWorkspaces !! 7 )
      , className =? "Gimp"    --> doShift ( myWorkspaces !! 8 )
@@ -755,7 +756,7 @@ myKeys :: [(String, X ())]
 myKeys =
     -- Xmonad
         [ ("M-C-r", spawn "xmonad --recompile") -- Recompiles xmonad
-        , ("M-S-r", spawn "xmonad --restart")   -- Restarts xmonad
+        , ("M-S-r", spawn "killall xmobar ; xmonad --restart")   -- Restarts xmonad
         , ("M-S-q", io exitSuccess)             -- Quits xmonad
 
     -- Run Prompt
