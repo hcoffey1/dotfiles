@@ -1,0 +1,96 @@
+{
+  "workbench.colorTheme": "Monokai++",
+  "C_Cpp.updateChannel": "Insiders",
+  "git.autofetch": true,
+  "python.pythonPath": "/bin/python",
+  "vim.easymotion": true,
+  "vim.incsearch": true,
+  "vim.useSystemClipboard": true,
+  "vim.useCtrlKeys": true,
+  "vim.hlsearch": true,
+  "vim.enableNeovim": true,
+  //"vim.neovimPath": "/home/hayden/.config/",
+  "vim.insertModeKeyBindings": [
+    {
+      "before": [
+        "j",
+        "j"
+      ],
+      "after": [
+        "<Esc>"
+      ]
+    },
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "<leader>",
+        "d"
+      ],
+      "after": [
+        "d",
+        "d"
+      ]
+    },
+    {
+      "before": [
+        "<C-n>"
+      ],
+      "commands": [
+        ":nohl"
+      ]
+    },
+    {
+      "before": [
+        ";"
+      ],
+      "after": [
+        ":",
+      ]
+    }
+  ],
+  "vim.leader": "<space>",
+  "vim.handleKeys": {
+    "<C-a>": false,
+    "<C-f>": false
+  },
+  "window.zoomLevel": -1,
+  "editor.renderWhitespace": "none",
+  "liveServer.settings.donotShowInfoMsg": true,
+  "terminal.integrated.commandsToSkipShell": [
+    "language-julia.interrupt"
+  ],
+  "[c]": {
+  
+    "editor.wordBasedSuggestions": false,
+    "editor.suggest.insertMode": "replace",
+    "editor.semanticHighlighting.enabled": true
+  }
+  /*"vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        ":"
+      ],
+      "commands": [
+        "workbench.action.showCommands",
+      ]
+    }
+  ]*/
+  //"vim.normalModeKeyBindingsNonRecursive": [
+  //  {
+  //    "before": [
+  //      ";"
+  //    ],
+  //    "after": [
+  //      ":",
+  //    ]
+  //  }
+  //]
+  /*"vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "key": "gg+=+G",
+      "command": "editor.action.formatDocument",
+      "when": "editorHasDocumentFormattingProvider && editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
+    }
+  ]*/
+}
