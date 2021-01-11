@@ -1,5 +1,5 @@
 {
-  "workbench.colorTheme": "Monokai++",
+  "workbench.colorTheme": "Monokai Dimmed",
   "C_Cpp.updateChannel": "Insiders",
   "git.autofetch": true,
   "python.pythonPath": "/bin/python",
@@ -54,7 +54,7 @@
     "<C-a>": false,
     "<C-f>": false
   },
-  "window.zoomLevel": -1,
+  "window.zoomLevel": 0,
   "editor.renderWhitespace": "none",
   "liveServer.settings.donotShowInfoMsg": true,
   "terminal.integrated.commandsToSkipShell": [
