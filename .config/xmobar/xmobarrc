@@ -27,7 +27,7 @@ Config { font    = "xft:Ubuntu:weight=bold:pixelsize=11:antialias=true:hinting=t
                       -- Ram used number and percent
                     , Run Memory ["-t", "<icon=memory-icon_20.xpm/> mem: <used>M (<usedratio>%)"] 20
                       -- Disk space free
-                    , Run DiskU [("/", "<icon=harddisk-icon_20.xpm/> hdd: <free> free")] [] 60
+                    , Run DiskU [("/home", "<icon=harddisk-icon_20.xpm/> hdd: <free> free")] [] 60
                       -- Runs custom script to check for pacman updates.
                       -- This script is in my dotfiles repo in .local/bin.
                     , Run Com "/home/hayden/.local/bin/pacupdate" [] "pacupdate" 36000
