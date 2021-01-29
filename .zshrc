@@ -86,6 +86,8 @@ alias dotfiles="/usr/bin/git --git-dir=${HOME}/.dotfiles/ --work-tree=${HOME}"
 alias res="cd ${HOME}/school/grad/research"
 alias proj="cd ${HOME}/projects"
 alias ta="cd ${HOME}/ta"
+alias hdd0="cd /media/hdd0"
+alias virt="cd /media/hdd0/virt"
 
 # Add vim controls to zsh
 bindkey -v
