@@ -83,7 +83,7 @@ alias vim="nvim"
 alias vi="nvim"
 alias dotfiles="/usr/bin/git --git-dir=${HOME}/.dotfiles/ --work-tree=${HOME}"
 
-alias res="cd ${HOME}/school/grad/research"
+alias res="cd ${HOME}/projects/research"
 alias proj="cd ${HOME}/projects"
 alias ta="cd ${HOME}/ta"
 alias hdd0="cd /media/hdd0"

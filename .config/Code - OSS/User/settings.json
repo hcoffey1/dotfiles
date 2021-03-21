@@ -1,5 +1,5 @@
 {
-  "workbench.colorTheme": "Monokai Dimmed",
+  "workbench.colorTheme": "Monokai",
   "C_Cpp.updateChannel": "Insiders",
   "git.autofetch": true,
   "python.pythonPath": "/bin/python",

@@ -39,6 +39,8 @@ Plug 'terryma/vim-multiple-cursors'
 " Latex Support
 Plug 'lervag/vimtex'
 
+Plug 'neovimhaskell/haskell-vim'
+
 call plug#end()
 
 let g:ycm_autoclose_preview_window_after_completion = 1
@@ -109,5 +111,16 @@ map <leader>l :wincmd l<CR>
 
 :autocmd BufNewFile *.c 0r ~/.config/nvim/templates/template.c
 :autocmd BufNewFile makefile 0r ~/.config/nvim/templates/makefile
+
+syntax on
+filetype plugin indent on
+
+let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
+let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
+let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
+let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
+let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
+let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
+let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
 
 "endif	
