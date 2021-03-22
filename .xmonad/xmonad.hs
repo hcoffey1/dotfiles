@@ -79,7 +79,7 @@ myFont :: String
 myFont = "xft:Mononoki Nerd Font:bold:size=9:antialias=true:hinting=true"
 
 myModMask :: KeyMask
-myModMask = mod4Mask       -- Sets modkey to super/windows key
+myModMask = mod1Mask       -- Sets modkey to super/windows key
 
 myTerminal :: String
 myTerminal = "termite "   -- Sets default terminal
