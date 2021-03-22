@@ -79,7 +79,7 @@ myFont :: String
 myFont = "xft:Mononoki Nerd Font:bold:size=9:antialias=true:hinting=true"
 
 myModMask :: KeyMask
-myModMask = mod1Mask       -- Sets modkey to super/windows key
+myModMask = mod4Mask       -- Sets modkey to super/windows key
 
 myTerminal :: String
 myTerminal = "termite "   -- Sets default terminal
@@ -767,7 +767,7 @@ myKeys =
     -- Useful programs to have a keybinding for launch
         , (mkey ++ "-<Return>", spawn (myTerminal))
         , (mkey ++ "-b", spawn (myBrowser))
-        , (mkey ++ "-M1-h", spawn (myTerminal ++ " -e htop"))
+        --, (mkey ++ "-M1-h", spawn (myTerminal ++ " -e htop"))
 
     -- Kill windows
         , (mkey ++ "-S-c", kill1)                         -- Kill the currently focused client
@@ -814,8 +814,8 @@ myKeys =
 
     -- Layouts
         , (mkey ++ "-<Tab>", sendMessage NextLayout)           -- Switch to next layout
-        , (mkey ++ "-C-M1-<Up>", sendMessage Arrange)
-        , (mkey ++ "-C-M1-<Down>", sendMessage DeArrange)
+       -- , (mkey ++ "-C-M1-<Up>", sendMessage Arrange)
+        --, (mkey ++ "-C-M1-<Down>", sendMessage DeArrange)
         , (mkey ++ "-<Space>", sendMessage (MT.Toggle NBFULL) >> sendMessage ToggleStruts) -- Toggles noborder/full
         , (mkey ++ "-S-<Space>", sendMessage ToggleStruts)     -- Toggles struts
         , (mkey ++ "-S-n", sendMessage $ MT.Toggle NOBORDERS)  -- Toggles noborder
@@ -829,8 +829,8 @@ myKeys =
     -- Window resizing
         , (mkey ++ "-h", sendMessage Shrink)                   -- Shrink horiz window width
         , (mkey ++ "-l", sendMessage Expand)                   -- Expand horiz window width
-        , (mkey ++ "-M1-j", sendMessage MirrorShrink)          -- Shrink vert window width
-        , (mkey ++ "-M1-k", sendMessage MirrorExpand)          -- Exoand vert window width
+        --, (mkey ++ "-M1-j", sendMessage MirrorShrink)          -- Shrink vert window width
+        --, (mkey ++ "-M1-k", sendMessage MirrorExpand)          -- Exoand vert window width
 
     -- Sublayouts
     -- This is used to push windows to tabbed sublayouts, or pull them out of it.
