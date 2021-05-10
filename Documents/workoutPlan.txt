@@ -4,8 +4,8 @@
 Rotation A:
 
 1 Legs/Abs
-    -   Deadlifts                   3/12   
     -   Burpees                     3/10
+    -   Deadlifts                   3/12   
     -   Back Squat                  3/10
     -   Single Side Reverse Lunge   3/10    L/R
     -   Front Squat                 3/10
@@ -19,10 +19,10 @@ Rotation A:
         -   Weighted sit up     (10)
         -   Rest    
 
-2 Chest
+2 Chest (Jog)
     - Pushup (With bag)             3/10    1/10 (Without)
-    - Clean to Press                3/10
-    - Overhead Press                3/12
+    - Clean to Press                3/05
+    - Overhead Press                3/05
     - Pushups til failure 
 3 Back/Abs
     -   Shouldering Squat           3/10
@@ -38,13 +38,13 @@ Rotation A:
         -   Weighted sit up
         -   Rest    
 
-4 Rest (Calf Exercise)
+4 Rest (Calf Exercise) (Jog)
 
 5 Shoulder/Abs
     -   Lat Raises                  3/12
     -   Bent Over Lat Raise         3/12
     -   Front Raise                 3/12
-    -   Overhead Press              3/12, 20 second hold
+    -   Overhead Press              3/10, 20 second hold
     -   Upright Row                 3/10
     -   Shrugs                      3/12
 
@@ -56,8 +56,8 @@ Rotation A:
         -   Weighted sit-up
         -   Rest    
 
-6 Arms
-    -   Single Arm Swing            3/10
+6 Arms (Jog)
+    -   Single Arm Swing            2/10
     -   Bicep Curl                  3/10
     -   Tricep Pushup               3/12
     -   Tricep Dips                 3/12

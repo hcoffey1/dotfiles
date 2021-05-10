@@ -9,6 +9,7 @@
   "vim.useCtrlKeys": true,
   "vim.hlsearch": true,
   "vim.enableNeovim": true,
+  "workbench.editor.enablePreview": false,
   //"vim.neovimPath": "/home/hayden/.config/",
   "vim.insertModeKeyBindings": [
     {
