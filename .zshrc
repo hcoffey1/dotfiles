@@ -89,6 +89,9 @@ alias ta="cd ${HOME}/ta"
 alias hdd0="cd /media/hdd0"
 alias virt="cd /media/hdd0/virt"
 
+#Neovim runtime path
+export VIMRUNTIME=./applications/nvim-linux64/share/nvim/runtime/
+
 # Add vim controls to zsh
 bindkey -v
 bindkey "^?" backward-delete-char
