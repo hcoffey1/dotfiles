@@ -2,7 +2,6 @@
   "workbench.colorTheme": "Monokai",
   "C_Cpp.updateChannel": "Insiders",
   "git.autofetch": true,
-  "python.pythonPath": "/bin/python",
   "vim.easymotion": true,
   "vim.incsearch": true,
   "vim.useSystemClipboard": true,
@@ -66,7 +65,18 @@
     "editor.wordBasedSuggestions": false,
     "editor.suggest.insertMode": "replace",
     "editor.semanticHighlighting.enabled": true
-  }
+  },
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter-notebook"
+  },
+  "python.defaultInterpreterPath": "/bin/python",
+  "editor.tabSize": 8,
+  "editor.cursorStyle": "line",
+  "editor.insertSpaces": false,
+  "editor.lineNumbers": "on",
+  "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
+  "editor.wordWrap": "off",
+  "cmake.configureOnOpen": false
   /*"vim.normalModeKeyBindingsNonRecursive": [
     {
       "before": [

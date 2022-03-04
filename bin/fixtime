@@ -1,5 +1,7 @@
 #!/bin/bash
 #Hayden Coffey
 #Restart openntpd, my system time tends to break when I dual boot
-sudo systemctl stop openntpd.service
-sudo systemctl start openntpd.service
+#sudo systemctl stop openntpd.service
+#sudo systemctl start openntpd.service
+
+sudo ntpdate ntp.ubuntu.com

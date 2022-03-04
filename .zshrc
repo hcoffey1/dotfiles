@@ -83,7 +83,7 @@ alias vim="nvim"
 alias vi="nvim"
 alias dotfiles="/usr/bin/git --git-dir=${HOME}/.dotfiles/ --work-tree=${HOME}"
 
-alias res="cd ${HOME}/projects/research"
+alias res="cd /media/hdd0/research"
 alias proj="cd ${HOME}/projects"
 alias ta="cd ${HOME}/ta"
 alias hdd0="cd /media/hdd0"
@@ -129,4 +129,9 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-export PATH=$HOME/bin:/usr/local/bin:$HOME/.local/bin:$PATH
+export TOOL_ASM_PATH=/media/hdd0/research/hc_as.S
+export CUSTOM_C=/media/hdd0/research/llvm-project/build/bin/clang
+export CUSTOM_CC=/media/hdd0/research/llvm-project/build/bin/clang++
+export RISCV=/media/hdd0/virt/riscv/bin
+export PATH=$HOME/bin:/usr/local/bin:$HOME/.local/bin:$RISCV/bin:$PATH
+export PATH=$HOME/.emacs.d/bin:$PATH

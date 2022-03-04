@@ -82,7 +82,7 @@ myModMask :: KeyMask
 myModMask = mod1Mask       -- Sets modkey to super/windows key
 
 myTerminal :: String
-myTerminal = "termite "   -- Sets default terminal
+myTerminal = "alacritty"   -- Sets default terminal
 
 myBrowser :: String
 myBrowser = "firefox "               -- Sets qutebrowser as browser for tree select
@@ -110,7 +110,8 @@ windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace
 myStartupHook :: X ()
 myStartupHook = do
           --spawnOnce "nitrogen --restore &"
-          spawnOnce "feh --randomize --bg-scale Pictures/wallpapers/*"
+          spawnOnce "feh --randomize --bg-fill Pictures/wallpapers/*"
+          spawnOnce "xrandr --auto --output HDMI-1 --right-of HDMI-0"
           spawnOnce "picom &"
           spawnOnce "nm-applet &"
           spawnOnce "volumeicon &"
