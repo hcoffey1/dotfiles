@@ -130,8 +130,8 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 export TOOL_ASM_PATH=/media/hdd0/research/hc_as.S
-export CUSTOM_C=/media/hdd0/research/llvm-project/build/bin/clang
-export CUSTOM_CC=/media/hdd0/research/llvm-project/build/bin/clang++
+export CUSTOM_C=/media/hdd0/research/shared/customPass/llvm-project/build/bin/clang
+export CUSTOM_CC=/media/hdd0/research/shared/customPass/llvm-project/build/bin/clang++
 export RISCV=/media/hdd0/virt/riscv/bin
 export PATH=$HOME/bin:/usr/local/bin:$HOME/.local/bin:$RISCV/bin:$PATH
 export PATH=$HOME/.emacs.d/bin:$PATH
