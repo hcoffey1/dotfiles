@@ -1,0 +1,12 @@
+style_pack
+vimish
+lang/syntax/yedrc
+lang/yedrc
+lang/c
+lang/cpp
+lang/make
+lang/syntax/c
+lang/syntax/cpp
+lang/syntax/make
+lang/syntax/sh
+lang/sh
