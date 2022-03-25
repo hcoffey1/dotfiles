@@ -90,7 +90,10 @@ alias hdd0="cd /media/hdd0"
 alias virt="cd /media/hdd0/virt"
 
 #Neovim runtime path
-export VIMRUNTIME=${HOME}/applications/nvim-linux64/share/nvim/runtime/
+
+if ! [[ $HOST = "tboard" ]]; then
+    export VIMRUNTIME=${HOME}/applications/nvim-linux64/share/nvim/runtime/
+fi
 
 # Add vim controls to zsh
 bindkey -v
@@ -104,11 +107,11 @@ export TERM="xterm-256color"
 
 ## for emacs
 if [[ $EMACS = "t" ]] then
-   #PROMPT="%# "  # make the prompt simple
-   #unsetopt zle  # turn off advanced line editting
-   alias ls="ls -A"
-   #ls_pager=( cat ) # ls is simple piped to cat
-   #ls_flags=( -A )  # default ls flags
+    #PROMPT="%# "  # make the prompt simple
+    #unsetopt zle  # turn off advanced line editting
+    alias ls="ls -A"
+    #ls_pager=( cat ) # ls is simple piped to cat
+    #ls_flags=( -A )  # default ls flags
 fi
 
 # You may need to manually set your language environment
