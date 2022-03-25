@@ -1,0 +1,13 @@
+plugin-load 'ypm'
+
+set truecolor 'yes'
+
+# some nicer colors
+plugin-load 'ypm'
+plugin-load 'vimish'
+
+#plugin-load 'styles/casey'
+style 'monokai'
+
+# @keybindings
+vimish-bind normal ";" command-prompt

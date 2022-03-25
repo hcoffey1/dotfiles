@@ -90,7 +90,7 @@ alias hdd0="cd /media/hdd0"
 alias virt="cd /media/hdd0/virt"
 
 #Neovim runtime path
-export VIMRUNTIME=./applications/nvim-linux64/share/nvim/runtime/
+export VIMRUNTIME=${HOME}/applications/nvim-linux64/share/nvim/runtime/
 
 # Add vim controls to zsh
 bindkey -v
