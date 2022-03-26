@@ -13,22 +13,27 @@ style 'monokai'
 set cursor-line "yes"
 set vimish-insert-no-cursor-line "yes"
 
-set status-line-left "test"
+#set status-line-left "test"
 
 set go-menu-persistent-items "~/.config/yed/init.c ~/.config/yed/yedrc"
 
 # @keybindings
 #===================
 vimish-bind normal ";" command-prompt
+vimish-bind normal "y" yank-selection
+vimish-bind normal "y y" multi "select-lines" "yank-selection"
 vimish-bind normal "x" multi "yank-selection 1" "delete-forward"
 vimish-bind normal "^" cursor-line-begin
 vimish-bind normal "I" multi "cursor-line-begin" "vimish-enter-insert"
 
 # @jump stack bindings
 vimish-bind normal "ctrl-}" multi "jump-stack-push" "ctags-jump-to-definition"
-vimish-bind normal "ctrl-i" jump-stack-pop
+vimish-bind normal "ctrl-o" jump-stack-pop
 
 vimish-bind select "x" multi "yank-selection 1" "delete-forward"
+vimish-bind yank   "x" multi "yank-selection 1" "delete-forward"
+vimish-bind normal "d w" multi "select" "cursor-next-word" "delete-back"
+
 vimish-bind insert "j j" vimish-exit-insert
 vimish-bind normal "ctrl-u" scroll -20
 vimish-bind normal "ctrl-d" scroll 20
@@ -38,7 +43,6 @@ set "mouse-menu-on-word" "Paste paste-yank-buffer                               
                                Manpage 'man-word'                                                   \
                                Convert convert-number"
                      
-
 alias "vsp" frame-vsplit                              
 alias "hsp" frame-hsplit                              
 
@@ -46,3 +50,9 @@ alias "fn" frame-next
 alias "fp" frame-prev
 alias "bn" buffer-next                              
 alias "bp" buffer-prev
+
+alias "go" go-menu
+
+alias "rd" redraw
+alias "rl" reload
+alias "rel" reload
