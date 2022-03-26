@@ -7,6 +7,10 @@
  */
 void recompile_init(int n_args, char **args);
 
+void open_log(int n_args, char **args);
+
+void scroll(int n_args, char **args);
+
 /* This is the entry point for this file when yed loads it. */
 int yed_plugin_boot(yed_plugin *self) {
     char *path;
@@ -21,6 +25,8 @@ int yed_plugin_boot(yed_plugin *self) {
 
     /* This makes the recompile_init function available as a command. */
     yed_plugin_set_command(self, "recompile-init", recompile_init);
+    yed_plugin_set_command(self, "blog", open_log);
+    yed_plugin_set_command(self, "scroll", scroll);
 
     YEXE("plugin-load", "yedrc");
 
@@ -44,4 +50,35 @@ void recompile_init(int n_args, char **args) {
     free(build_sh_path);
 
     YEXE("sh", buff);
+}
+
+void open_log(int n_args, char **args)
+{
+    YEXE("buffer", "*log");
+}
+
+void scroll(int n_args, char **args)
+{
+    if (n_args != 1)
+    {
+        return;
+    }
+    
+    int val = atoi(args[0]);
+    if(val > 0)
+    {
+        for(int i = 0; i < val; i++)
+        {
+            YEXE("cursor-down");
+        }
+    }
+    
+    if(val < 0)
+    {
+        val = -val;
+        for(int i = 0; i < val; i++)
+        {
+            YEXE("cursor-up");
+        }
+    }
 }

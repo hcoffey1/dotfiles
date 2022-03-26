@@ -139,5 +139,9 @@ export TOOL_ASM_PATH=/media/hdd0/research/hc_as.S
 export CUSTOM_C=/media/hdd0/research/shared/customPass/llvm-project/build/bin/clang
 export CUSTOM_CC=/media/hdd0/research/shared/customPass/llvm-project/build/bin/clang++
 export RISCV=/media/hdd0/virt/riscv/bin
+
+export YED_LIB_DIR=$HOME/.local/lib/yed/plugins
+export YED_CONFIG_DIR=$HOME/.config/yed
+
 export PATH=$HOME/bin:/usr/local/bin:$HOME/.local/bin:$RISCV/bin:$PATH
 export PATH=$HOME/.emacs.d/bin:$PATH
