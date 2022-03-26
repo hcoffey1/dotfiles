@@ -91,7 +91,7 @@ alias virt="cd /media/hdd0/virt"
 
 #Neovim runtime path
 
-if ! [[ $HOST = "tboard" ]]; then
+if ! [[ "$HOST" == "tboard" ]]; then
     export VIMRUNTIME=${HOME}/applications/nvim-linux64/share/nvim/runtime/
 fi
 
