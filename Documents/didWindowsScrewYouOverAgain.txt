@@ -1,0 +1,19 @@
+Did windows update and nuke your boot loader but its still kinda your fault cause you placed it on their boot partition?
+
+Well here is the simple fix:
+
+Get arch boot medium loaded,
+
+Mount root onto /mnt, then do:
+
+mount --rbind --make-rslave /dev /mnt/dev
+mount --rbind --make-rslave /sys /mnt/sys
+mount -t proc proc /mnt/proc
+
+chroot into /mnt
+
+Run refind-install
+
+Should be good to go
+
+May want to remove /efi/EFI/Microsoft/Boot/icons-backup and refind.conf-sample

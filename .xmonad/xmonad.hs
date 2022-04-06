@@ -79,10 +79,10 @@ myFont :: String
 myFont = "xft:Mononoki Nerd Font:bold:size=9:antialias=true:hinting=true"
 
 myModMask :: KeyMask
-myModMask = mod4Mask       -- Sets modkey to super/windows key
+myModMask = mod1Mask       -- Sets modkey to super/windows key
 
 myTerminal :: String
-myTerminal = "termite "   -- Sets default terminal
+myTerminal = "alacritty"   -- Sets default terminal
 
 myBrowser :: String
 myBrowser = "firefox "               -- Sets qutebrowser as browser for tree select
@@ -110,7 +110,8 @@ windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace
 myStartupHook :: X ()
 myStartupHook = do
           --spawnOnce "nitrogen --restore &"
-          spawnOnce "feh --randomize --bg-scale Pictures/wallpapers/*"
+          spawnOnce "feh --randomize --bg-fill Pictures/wallpapers/*"
+          spawnOnce "xrandr --auto --output HDMI-1 --right-of HDMI-0"
           spawnOnce "picom &"
           spawnOnce "nm-applet &"
           spawnOnce "volumeicon &"
@@ -735,6 +736,7 @@ myManageHook = composeAll
      -- name of my workspaces, and the names would very long if using clickable workspaces.
      [ title =? "Mozilla Firefox"     --> doShift ( myWorkspaces !! 1 )
      , className =? "spotify"     --> doShift ( myWorkspaces !! 6 )
+     , className =? "discord"     --> doShift ( myWorkspaces !! 5 )
      , className =? "mpv"     --> doShift ( myWorkspaces !! 7 )
      , className =? "vlc"     --> doShift ( myWorkspaces !! 7 )
      , className =? "Gimp"    --> doShift ( myWorkspaces !! 8 )
@@ -751,44 +753,46 @@ myLogHook = fadeInactiveLogHook fadeAmount
 -- The Super/Windows key is ‘M’ (the modkey).
 -- The ALT key is ‘M1’.
 -- SHIFT is ‘S’ and CTR is ‘C’.
+mkey :: String
+mkey = "M1"
 myKeys :: [(String, X ())]
 myKeys =
     -- Xmonad
-        [ ("M-C-r", spawn "xmonad --recompile") -- Recompiles xmonad
-        , ("M-S-r", spawn "xmonad --restart")   -- Restarts xmonad
-        , ("M-S-q", io exitSuccess)             -- Quits xmonad
+        [ (mkey ++ "-C-r", spawn "xmonad --recompile") -- Recompiles xmonad
+        , (mkey ++ "-S-r", spawn "killall xmobar ; xmonad --restart")   -- Restarts xmonad
+        , (mkey ++ "-S-q", io exitSuccess)             -- Quits xmonad
 
     -- Run Prompt
-        , ("M-S-<Return>", shellPrompt dtXPConfig) -- Shell Prompt
+        , (mkey ++ "-S-<Return>", shellPrompt dtXPConfig) -- Shell Prompt
 
     -- Useful programs to have a keybinding for launch
-        , ("M-<Return>", spawn (myTerminal))
-        , ("M-b", spawn (myBrowser))
-        , ("M-M1-h", spawn (myTerminal ++ " -e htop"))
+        , (mkey ++ "-<Return>", spawn (myTerminal))
+        , (mkey ++ "-b", spawn (myBrowser))
+        --, (mkey ++ "-M1-h", spawn (myTerminal ++ " -e htop"))
 
     -- Kill windows
-        , ("M-S-c", kill1)                         -- Kill the currently focused client
-        , ("M-S-a", killAll)                       -- Kill all windows on current workspace
+        , (mkey ++ "-S-c", kill1)                         -- Kill the currently focused client
+        , (mkey ++ "-S-a", killAll)                       -- Kill all windows on current workspace
 
     -- Lock screen
-        , ("M-z", spawn "slock")
+        , (mkey ++ "-z", spawn "slock")
 
     -- Workspaces
-        , ("M-.", nextScreen)  -- Switch focus to next monitor
-        , ("M-,", prevScreen)  -- Switch focus to prev monitor
-        , ("M-S-<KP_Add>", shiftTo Next nonNSP >> moveTo Next nonNSP)       -- Shifts focused window to next ws
-        , ("M-S-<KP_Subtract>", shiftTo Prev nonNSP >> moveTo Prev nonNSP)  -- Shifts focused window to prev ws
+        , (mkey ++ "-.", nextScreen)  -- Switch focus to next monitor
+        , (mkey ++ "-,", prevScreen)  -- Switch focus to prev monitor
+        , (mkey ++ "-S-<KP_Add>", shiftTo Next nonNSP >> moveTo Next nonNSP)       -- Shifts focused window to next ws
+        , (mkey ++ "-S-<KP_Subtract>", shiftTo Prev nonNSP >> moveTo Prev nonNSP)  -- Shifts focused window to prev ws
 
     -- Floating windows
-        , ("M-f", sendMessage (T.Toggle "floats")) -- Toggles my 'floats' layout
-        , ("M-t", withFocused $ windows . W.sink)  -- Push floating window back to tile
-        , ("M-S-t", sinkAll)                       -- Push ALL floating windows to tile
+        , (mkey ++ "-f", sendMessage (T.Toggle "floats")) -- Toggles my 'floats' layout
+        , (mkey ++ "-t", withFocused $ windows . W.sink)  -- Push floating window back to tile
+        , (mkey ++ "-S-t", sinkAll)                       -- Push ALL floating windows to tile
 
     -- Increase/decrease spacing (gaps)
-        , ("M-d", decWindowSpacing 4)           -- Decrease window spacing
-        , ("M-i", incWindowSpacing 4)           -- Increase window spacing
-        , ("M-S-d", decScreenSpacing 4)         -- Decrease screen spacing
-        , ("M-S-i", incScreenSpacing 4)         -- Increase screen spacing
+        , (mkey ++ "-d", decWindowSpacing 4)           -- Decrease window spacing
+        , (mkey ++ "-i", incWindowSpacing 4)           -- Increase window spacing
+        , (mkey ++ "-S-d", decScreenSpacing 4)         -- Decrease screen spacing
+        , (mkey ++ "-S-i", incScreenSpacing 4)         -- Increase screen spacing
 
     -- Grid Select (CTR-g followed by a key)
         , ("C-g g", spawnSelected' myAppGrid)                 -- grid select favorite apps
@@ -799,57 +803,57 @@ myKeys =
         , ("C-t t", treeselectAction tsDefaultConfig)
 
     -- Windows navigation
-        , ("M-m", windows W.focusMaster)  -- Move focus to the master window
-        , ("M-j", windows W.focusDown)    -- Move focus to the next window
-        , ("M-k", windows W.focusUp)      -- Move focus to the prev window
-        , ("M-S-m", windows W.swapMaster) -- Swap the focused window and the master window
-        , ("M-S-j", windows W.swapDown)   -- Swap focused window with next window
-        , ("M-S-k", windows W.swapUp)     -- Swap focused window with prev window
-        , ("M-<Backspace>", promote)      -- Moves focused window to master, others maintain order
-        , ("M-S-<Tab>", rotSlavesDown)    -- Rotate all windows except master and keep focus in place
-        , ("M-C-<Tab>", rotAllDown)       -- Rotate all the windows in the current stack
+        , (mkey ++ "-m", windows W.focusMaster)  -- Move focus to the master window
+        , (mkey ++ "-j", windows W.focusDown)    -- Move focus to the next window
+        , (mkey ++ "-k", windows W.focusUp)      -- Move focus to the prev window
+        , (mkey ++ "-S-m", windows W.swapMaster) -- Swap the focused window and the master window
+        , (mkey ++ "-S-j", windows W.swapDown)   -- Swap focused window with next window
+        , (mkey ++ "-S-k", windows W.swapUp)     -- Swap focused window with prev window
+        , (mkey ++ "-<Backspace>", promote)      -- Moves focused window to master, others maintain order
+        , (mkey ++ "-S-<Tab>", rotSlavesDown)    -- Rotate all windows except master and keep focus in place
+        , (mkey ++ "-C-<Tab>", rotAllDown)       -- Rotate all the windows in the current stack
 
     -- Layouts
-        , ("M-<Tab>", sendMessage NextLayout)           -- Switch to next layout
-        , ("M-C-M1-<Up>", sendMessage Arrange)
-        , ("M-C-M1-<Down>", sendMessage DeArrange)
-        , ("M-<Space>", sendMessage (MT.Toggle NBFULL) >> sendMessage ToggleStruts) -- Toggles noborder/full
-        , ("M-S-<Space>", sendMessage ToggleStruts)     -- Toggles struts
-        , ("M-S-n", sendMessage $ MT.Toggle NOBORDERS)  -- Toggles noborder
+        , (mkey ++ "-<Tab>", sendMessage NextLayout)           -- Switch to next layout
+       -- , (mkey ++ "-C-M1-<Up>", sendMessage Arrange)
+        --, (mkey ++ "-C-M1-<Down>", sendMessage DeArrange)
+        , (mkey ++ "-<Space>", sendMessage (MT.Toggle NBFULL) >> sendMessage ToggleStruts) -- Toggles noborder/full
+        , (mkey ++ "-S-<Space>", sendMessage ToggleStruts)     -- Toggles struts
+        , (mkey ++ "-S-n", sendMessage $ MT.Toggle NOBORDERS)  -- Toggles noborder
 
     -- Increase/decrease windows in the master pane or the stack
-        , ("M-S-<Up>", sendMessage (IncMasterN 1))      -- Increase number of clients in master pane
-        , ("M-S-<Down>", sendMessage (IncMasterN (-1))) -- Decrease number of clients in master pane
-        , ("M-C-<Up>", increaseLimit)                   -- Increase number of windows
-        , ("M-C-<Down>", decreaseLimit)                 -- Decrease number of windows
+        , (mkey ++ "-S-<Up>", sendMessage (IncMasterN 1))      -- Increase number of clients in master pane
+        , (mkey ++ "-S-<Down>", sendMessage (IncMasterN (-1))) -- Decrease number of clients in master pane
+        , (mkey ++ "-C-<Up>", increaseLimit)                   -- Increase number of windows
+        , (mkey ++ "-C-<Down>", decreaseLimit)                 -- Decrease number of windows
 
     -- Window resizing
-        , ("M-h", sendMessage Shrink)                   -- Shrink horiz window width
-        , ("M-l", sendMessage Expand)                   -- Expand horiz window width
-        , ("M-M1-j", sendMessage MirrorShrink)          -- Shrink vert window width
-        , ("M-M1-k", sendMessage MirrorExpand)          -- Exoand vert window width
+        , (mkey ++ "-h", sendMessage Shrink)                   -- Shrink horiz window width
+        , (mkey ++ "-l", sendMessage Expand)                   -- Expand horiz window width
+        --, (mkey ++ "-M1-j", sendMessage MirrorShrink)          -- Shrink vert window width
+        --, (mkey ++ "-M1-k", sendMessage MirrorExpand)          -- Exoand vert window width
 
     -- Sublayouts
     -- This is used to push windows to tabbed sublayouts, or pull them out of it.
-        , ("M-C-h", sendMessage $ pullGroup L)
-        , ("M-C-l", sendMessage $ pullGroup R)
-        , ("M-C-k", sendMessage $ pullGroup U)
-        , ("M-C-j", sendMessage $ pullGroup D)
-        , ("M-C-m", withFocused (sendMessage . MergeAll))
-        , ("M-C-u", withFocused (sendMessage . UnMerge))
-        , ("M-C-/", withFocused (sendMessage . UnMergeAll))
-        , ("M-C-.", onGroup W.focusUp')    -- Switch focus to next tab
-        , ("M-C-,", onGroup W.focusDown')  -- Switch focus to prev tab
+        , (mkey ++ "-C-h", sendMessage $ pullGroup L)
+        , (mkey ++ "-C-l", sendMessage $ pullGroup R)
+        , (mkey ++ "-C-k", sendMessage $ pullGroup U)
+        , (mkey ++ "-C-j", sendMessage $ pullGroup D)
+        , (mkey ++ "-C-m", withFocused (sendMessage . MergeAll))
+        , (mkey ++ "-C-u", withFocused (sendMessage . UnMerge))
+        , (mkey ++ "-C-/", withFocused (sendMessage . UnMergeAll))
+        , (mkey ++ "-C-.", onGroup W.focusUp')    -- Switch focus to next tab
+        , (mkey ++ "-C-,", onGroup W.focusDown')  -- Switch focus to prev tab
 
     -- Scratchpads
-        , ("M-C-<Return>", namedScratchpadAction myScratchPads "terminal")
-        , ("M-C-c", namedScratchpadAction myScratchPads "mocp")
+        , (mkey ++ "-C-<Return>", namedScratchpadAction myScratchPads "terminal")
+        , (mkey ++ "-C-c", namedScratchpadAction myScratchPads "mocp")
 
     -- Controls for mocp music player (SUPER-u followed by a key)
-        , ("M-u p", spawn "mocp --play")
-        , ("M-u l", spawn "mocp --next")
-        , ("M-u h", spawn "mocp --previous")
-        , ("M-u <Space>", spawn "mocp --toggle-pause")
+        , (mkey ++ "-u p", spawn "mocp --play")
+        , (mkey ++ "-u l", spawn "mocp --next")
+        , (mkey ++ "-u h", spawn "mocp --previous")
+        , (mkey ++ "-u <Space>", spawn "mocp --toggle-pause")
 
     -- Emacs (CTRL-e followed by a key)
         , ("C-e e", spawn "emacsclient -c -a 'emacs'")                            -- start emacs
@@ -880,12 +884,12 @@ myKeys =
         ]
     -- Appending search engine prompts to keybindings list.
     -- Look at "search engines" section of this config for values for "k".
-        ++ [("M-s " ++ k, S.promptSearch dtXPConfig' f) | (k,f) <- searchList ]
-        ++ [("M-S-s " ++ k, S.selectSearch f) | (k,f) <- searchList ]
+        ++ [(mkey ++ "-s " ++ k, S.promptSearch dtXPConfig' f) | (k,f) <- searchList ]
+        ++ [(mkey ++ "-S-s " ++ k, S.selectSearch f) | (k,f) <- searchList ]
     -- Appending some extra xprompts to keybindings list.
     -- Look at "xprompt settings" section this of config for values for "k".
-        ++ [("M-p " ++ k, f dtXPConfig') | (k,f) <- promptList ]
-        ++ [("M-p " ++ k, f dtXPConfig' g) | (k,f,g) <- promptList' ]
+        ++ [(mkey ++ "-p " ++ k, f dtXPConfig') | (k,f) <- promptList ]
+        ++ [(mkey ++ "-p " ++ k, f dtXPConfig' g) | (k,f,g) <- promptList' ]
     -- The following lines are needed for named scratchpads.
           where nonNSP          = WSIs (return (\ws -> W.tag ws /= "nsp"))
                 nonEmptyNonNSP  = WSIs (return (\ws -> isJust (W.stack ws) && W.tag ws /= "nsp"))

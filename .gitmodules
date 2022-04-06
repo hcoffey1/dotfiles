@@ -1,0 +1,3 @@
+[submodule ".config/yed/yedPlugins"]
+	path = .config/yed/yedPlugins
+	url = git@github.com:hcoffey1/yedPlugins.git

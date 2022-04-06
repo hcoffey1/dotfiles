@@ -9,7 +9,8 @@ export ZSH="${HOME}/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 #ZSH_THEME="robbyrussell"
-ZSH_THEME="theunraveler"
+#ZSH_THEME="theunraveler"
+ZSH_THEME="af-magic"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -82,9 +83,17 @@ alias vim="nvim"
 alias vi="nvim"
 alias dotfiles="/usr/bin/git --git-dir=${HOME}/.dotfiles/ --work-tree=${HOME}"
 
-alias res="cd ${HOME}/school/grad/research"
+alias res="cd /media/hdd0/research"
 alias proj="cd ${HOME}/projects"
 alias ta="cd ${HOME}/ta"
+alias hdd0="cd /media/hdd0"
+alias virt="cd /media/hdd0/virt"
+
+#Neovim runtime path
+
+if ! [[ "$HOST" == "tboard" ]]; then
+    export VIMRUNTIME=${HOME}/applications/nvim-linux64/share/nvim/runtime/
+fi
 
 # Add vim controls to zsh
 bindkey -v
@@ -98,11 +107,11 @@ export TERM="xterm-256color"
 
 ## for emacs
 if [[ $EMACS = "t" ]] then
-   #PROMPT="%# "  # make the prompt simple
-   #unsetopt zle  # turn off advanced line editting
-   alias ls="ls -A"
-   #ls_pager=( cat ) # ls is simple piped to cat
-   #ls_flags=( -A )  # default ls flags
+    #PROMPT="%# "  # make the prompt simple
+    #unsetopt zle  # turn off advanced line editting
+    alias ls="ls -A"
+    #ls_pager=( cat ) # ls is simple piped to cat
+    #ls_flags=( -A )  # default ls flags
 fi
 
 # You may need to manually set your language environment
@@ -126,4 +135,13 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-export PATH=$HOME/bin:/usr/local/bin:$HOME/.local/bin:$PATH
+export TOOL_ASM_PATH=/media/hdd0/research/hc_as.S
+export CUSTOM_C=/media/hdd0/research/shared/customPass/llvm-project/build/bin/clang
+export CUSTOM_CC=/media/hdd0/research/shared/customPass/llvm-project/build/bin/clang++
+export RISCV=/media/hdd0/virt/riscv/bin
+
+export YED_LIB_DIR=$HOME/.local/lib/yed/plugins
+export YED_CONFIG_DIR=$HOME/.config/yed
+
+export PATH=$HOME/bin:/usr/local/bin:$HOME/.local/bin:$RISCV/bin:$PATH
+export PATH=$HOME/.emacs.d/bin:$PATH
