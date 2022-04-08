@@ -143,5 +143,9 @@ export RISCV=/media/hdd0/virt/riscv/bin
 export YED_LIB_DIR=$HOME/.local/lib/yed/plugins
 export YED_CONFIG_DIR=$HOME/.config/yed
 
+#Lean2 imports
+export LEAN_PATH=/home/hayden/github/lean2/library:/home/hayden/school/cs704/project/electrolysis/thys 
+export LEAN2_BIN=/home/hayden/github/lean2/bin/lean
+
 export PATH=$HOME/bin:/usr/local/bin:$HOME/.local/bin:$RISCV/bin:$PATH
 export PATH=$HOME/.emacs.d/bin:$PATH

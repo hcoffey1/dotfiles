@@ -75,6 +75,8 @@ endif
 " Leader Key Remapping
 let mapleader="\<SPACE>"
 
+let maplocalleader='\'
+
 " Default Colorscheme(s)
 colorscheme challenger_deep
 let g:airline_theme='abstract'
@@ -250,7 +252,7 @@ end
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
 -- local servers = { 'pyright', 'rust_analyzer', 'tsserver' }
-local servers = { 'pyright' }
+local servers = { 'pyright', 'lean3ls', 'leanls' }
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
     on_attach = on_attach,
