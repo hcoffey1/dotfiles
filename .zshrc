@@ -144,8 +144,31 @@ export YED_LIB_DIR=$HOME/.local/lib/yed/plugins
 export YED_CONFIG_DIR=$HOME/.config/yed
 
 #Lean2 imports
-export LEAN_PATH=/home/hayden/github/lean2/library:/home/hayden/school/cs704/project/electrolysis/thys 
+export LEAN_PATH=/home/hayden/github/lean2/library:/home/hayden/school/cs704/project/electrolysis/thys:/usr/lib/lean/library/
+#export LEAN_PATH=/home/hayden/school/cs704/project/electrolysis/thys:/usr/lib/lean/library/:/home/hayden/github/mathlib/src
+#export LEAN_PATH=/home/hayden/github/mathlib/src/
 export LEAN2_BIN=/home/hayden/github/lean2/bin/lean
+
+#Rustc env var (lean verification)
+export CFG_COMPILER_HOST_TRIPLE=x86_64-unknown-linux-gnu
 
 export PATH=$HOME/bin:/usr/local/bin:$HOME/.local/bin:$RISCV/bin:$PATH
 export PATH=$HOME/.emacs.d/bin:$PATH
+
+#export IBMQ_TOKEN=$HOME/.config/ibmq.token
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/hayden/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/hayden/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/hayden/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/hayden/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
