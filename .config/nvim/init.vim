@@ -132,6 +132,7 @@ map <leader>l :wincmd l<CR>
 
 :autocmd BufNewFile *.c 0r ~/.config/nvim/templates/template.c
 :autocmd BufNewFile makefile 0r ~/.config/nvim/templates/makefile
+:autocmd BufNewFile CMakeLists.txt 0r ~/.config/nvim/templates/CMakeLists.txt
 
 syntax on
 filetype plugin indent on

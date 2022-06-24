@@ -85,7 +85,8 @@
     "**/.DS_Store": true,
     "**/Thumbs.db": true,
     "**/*.olean": true
-  }
+  },
+  "python.analysis.autoImportCompletions": false
   /*"vim.normalModeKeyBindingsNonRecursive": [
     {
       "before": [
