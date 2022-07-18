@@ -84,7 +84,7 @@ alias vi="nvim"
 alias dotfiles="/usr/bin/git --git-dir=${HOME}/.dotfiles/ --work-tree=${HOME}"
 
 if  [[ "$HOST" == "tboard" ]]; then
-    research_path=/media/hdd0/school/grad/research
+    research_path=/media/hdd0/research
 elif [[ "$HOST" == "TBIT" ]]; then
     research_path=${HOME}/school/grad/research
 fi
