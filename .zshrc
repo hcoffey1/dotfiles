@@ -83,10 +83,16 @@ alias vim="nvim"
 alias vi="nvim"
 alias dotfiles="/usr/bin/git --git-dir=${HOME}/.dotfiles/ --work-tree=${HOME}"
 
-alias res="cd /media/hdd0/research"
-alias spec="cd /media/hdd0/research/spec"
-alias ts="cd /media/hdd0/research/shared/customPass/llvm-test-suite"
-alias cur="cd /media/hdd0/research/shared/customPass"
+if  [[ "$HOST" == "tboard" ]]; then
+    research_path=/media/hdd0/school/grad/research
+elif [[ "$HOST" == "TBIT" ]]; then
+    research_path=${HOME}/school/grad/research
+fi
+
+alias res="cd ${research_path}"
+alias spec="cd ${research_path}/spec"
+alias ts="cd ${research_path}/shared/customPass/llvm-test-suite"
+alias cur="cd ${research_path}/shared/customPass"
 alias proj="cd ${HOME}/projects"
 alias ta="cd ${HOME}/ta"
 alias hdd0="cd /media/hdd0"
@@ -138,9 +144,9 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-export TOOL_ASM_PATH=/media/hdd0/research/hc_as.S
-export CUSTOM_C=/media/hdd0/research/shared/customPass/llvm-project/build/bin/clang
-export CUSTOM_CC=/media/hdd0/research/shared/customPass/llvm-project/build/bin/clang++
+export TOOL_ASM_PATH=${research_path}/hc_as.S
+export CUSTOM_C=${research_path}/shared/customPass/llvm-project/build/bin/clang
+export CUSTOM_CC=${research_path}/shared/customPass/llvm-project/build/bin/clang++
 export RISCV=/media/hdd0/virt/riscv/bin
 
 export YED_LIB_DIR=$HOME/.local/lib/yed/plugins
@@ -174,4 +180,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
