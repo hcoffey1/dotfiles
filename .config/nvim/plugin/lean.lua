@@ -138,7 +138,7 @@ require('lean').setup{
         -- Setting this to `true` is the same as `function() return true end`,
         -- i.e. autoopen for any Lean file, or setting it to `false` is the
         -- same as `function() return false end`, i.e. never autoopen.
-        autoopen = true,
+        autoopen = false,
 
         -- Set infoview windows' starting dimensions.
         -- Windows are opened horizontally or vertically depending on spacing.

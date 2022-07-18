@@ -1,29 +1,38 @@
-#Original framework from
-#https://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/
+#**************
+# Hayden Coffey
+# 
+#**************
 
-IDIR =../include
-CC=g++
-CFLAGS= -lSDL2 -ggdb3 -std=c++11 -Wall -lSDL2_ttf -lSDL2_image -I $(IDIR)
+targets=
 
-SDIR=src
-BDIR=bin
-LDIR=$(SDIR)/lib
-ODIR=$(SDIR)/obj
-IDIR=$(SDIR)/inc 
-
-SRC_FILES = $(wildcard $(SDIR)/*.cpp)
-OBJ =	$(patsubst $(SDIR)/%.cpp, $(ODIR)/%.o, $(SRC_FILES) ) 
-
-_DEPS = 
-DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
-
-$(ODIR)/%.o: $(SDIR)/%.cpp $(wildcard $(IDIR)/*.hpp)
-	$(CC) -c -o $@ $< $(CFLAGS)
-
-$(BDIR)/sm: $(OBJ)
-	$(CC) -o $@ $^ $(CFLAGS)
+all: $(targets)
 
 .PHONY: clean
 
+CC=
+CXX=
+
+flags=
+
+cxxFlags=$(shell llvm-config --cxxflags)
+ldFlags=$(shell llvm-config --ldflags --libs)
+
+#%.ll: %.cc
+#	$(CUSTOM_CC) -o $@ $< -std=c++14 $(cxxFlags) $(flags) -S -emit-llvm -fverbose-asm
+
+#%.o: %.cc
+#	$(CUSTOM_CC) -c -o $@ $< -std=c++14 $(cxxFlags) $(flags)
+#
+
+#tool.so: tool.o
+#	$(CXX) -shared -fPIC -o $@ $< $(cxxFlags) $(ldFlags) $(flags)
+
+#src_dir: export CFLAGS=-DCUSTOM_MACRO
+#src_dir:
+#	$(MAKE) -C src_dir
+
+#clean:
+#	$(MAKE) -C src_dir clean
+
 clean:
-	rm -f $(ODIR)/*.o core $(BDIR)/*
+	rm *.o *.ll

@@ -83,7 +83,16 @@ alias vim="nvim"
 alias vi="nvim"
 alias dotfiles="/usr/bin/git --git-dir=${HOME}/.dotfiles/ --work-tree=${HOME}"
 
-alias res="cd /media/hdd0/research"
+if  [[ "$HOST" == "tboard" ]]; then
+    research_path=/media/hdd0/research
+elif [[ "$HOST" == "TBIT" ]]; then
+    research_path=${HOME}/school/grad/research
+fi
+
+alias res="cd ${research_path}"
+alias spec="cd ${research_path}/spec"
+alias ts="cd ${research_path}/shared/customPass/llvm-test-suite"
+alias cur="cd ${research_path}/shared/customPass"
 alias proj="cd ${HOME}/projects"
 alias ta="cd ${HOME}/ta"
 alias hdd0="cd /media/hdd0"
@@ -91,9 +100,9 @@ alias virt="cd /media/hdd0/virt"
 
 #Neovim runtime path
 
-if ! [[ "$HOST" == "tboard" ]]; then
-    export VIMRUNTIME=${HOME}/applications/nvim-linux64/share/nvim/runtime/
-fi
+#if ! [[ "$HOST" == "tboard" ]]; then
+#    export VIMRUNTIME=${HOME}/applications/nvim-linux64/share/nvim/runtime/
+#fi
 
 # Add vim controls to zsh
 bindkey -v
@@ -135,13 +144,39 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-export TOOL_ASM_PATH=/media/hdd0/research/hc_as.S
-export CUSTOM_C=/media/hdd0/research/shared/customPass/llvm-project/build/bin/clang
-export CUSTOM_CC=/media/hdd0/research/shared/customPass/llvm-project/build/bin/clang++
+export TOOL_ASM_PATH=${research_path}/hc_as.S
+export CUSTOM_C=${research_path}/shared/customPass/llvm-project/build/bin/clang
+export CUSTOM_CC=${research_path}/shared/customPass/llvm-project/build/bin/clang++
 export RISCV=/media/hdd0/virt/riscv/bin
 
 export YED_LIB_DIR=$HOME/.local/lib/yed/plugins
 export YED_CONFIG_DIR=$HOME/.config/yed
 
+#Lean2 imports
+export LEAN_PATH=/home/hayden/github/lean2/library:/home/hayden/school/cs704/project/electrolysis/thys:/usr/lib/lean/library/
+#export LEAN_PATH=/home/hayden/school/cs704/project/electrolysis/thys:/usr/lib/lean/library/:/home/hayden/github/mathlib/src
+#export LEAN_PATH=/home/hayden/github/mathlib/src/
+export LEAN2_BIN=/home/hayden/github/lean2/bin/lean
+
+#Rustc env var (lean verification)
+export CFG_COMPILER_HOST_TRIPLE=x86_64-unknown-linux-gnu
+
 export PATH=$HOME/bin:/usr/local/bin:$HOME/.local/bin:$RISCV/bin:$PATH
 export PATH=$HOME/.emacs.d/bin:$PATH
+
+#export IBMQ_TOKEN=$HOME/.config/ibmq.token
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/hayden/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/hayden/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/hayden/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/hayden/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<

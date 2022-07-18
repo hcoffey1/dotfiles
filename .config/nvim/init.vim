@@ -75,6 +75,8 @@ endif
 " Leader Key Remapping
 let mapleader="\<SPACE>"
 
+let maplocalleader='\'
+
 " Default Colorscheme(s)
 colorscheme challenger_deep
 let g:airline_theme='abstract'
@@ -130,6 +132,7 @@ map <leader>l :wincmd l<CR>
 
 :autocmd BufNewFile *.c 0r ~/.config/nvim/templates/template.c
 :autocmd BufNewFile makefile 0r ~/.config/nvim/templates/makefile
+:autocmd BufNewFile CMakeLists.txt 0r ~/.config/nvim/templates/CMakeLists.txt
 
 syntax on
 filetype plugin indent on
@@ -250,7 +253,7 @@ end
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
 -- local servers = { 'pyright', 'rust_analyzer', 'tsserver' }
-local servers = { 'pyright' }
+local servers = { 'lean3ls', 'leanls' }
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
     on_attach = on_attach,
