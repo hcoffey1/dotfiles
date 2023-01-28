@@ -697,19 +697,20 @@ myShowWNameTheme = def
     }
 
 -- The layout hook
-myLayoutHook = spacing 5 $ avoidStruts $ mouseResize $ windowArrange $ T.toggleLayouts floats
-               $ mkToggle (NBFULL ?? NOBORDERS ?? EOT) myDefaultLayout
-             where
-               -- I've commented out the layouts I don't use.
-               myDefaultLayout =     tall
-                                 ||| Main.magnify
-                                 ||| noBorders monocle
-                                 ||| floats
-                                 ||| noBorders tabs
-                                 ||| grid
-                                 ||| spirals
-                                 ||| threeCol
-                                 ||| threeRow
+
+myLayoutHook = avoidStruts (mouseResize $ windowArrange $ T.toggleLayouts floats
+               $ mkToggle (NBFULL ?? NOBORDERS ?? EOT) myDefaultLayout)
+                   where
+                       myDefaultLayout =     tiled 
+                                         ||| Main.magnify
+                                         ||| noBorders monocle
+                                         ||| floats
+                                         ||| noBorders tabs
+                                         ||| grid
+                                         ||| spirals
+                                         ||| threeCol
+                                         ||| threeRow
+                       tiled = spacingWithEdge 5 tall
 
 myWorkspaces = [" dev ", " www ", " sys ", " doc ", " vbox ", " chat ", " mus ", " vid ", " gfx "]
 -- myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
